@@ -1,0 +1,89 @@
+{
+  "name": "Bioontology Web Service",
+  "apiVersion": "1.0",
+  "description": "Returns Bioontology health topic search results in English or Spanish for an input query string.",
+  "baseUri": "https://data.bioontology.org/",
+  "operations": {
+    "Search": {
+      "httpMethod": "GET",
+      "uri": "search",
+      "responseModel": "getResponse",
+      "summary": "Term Search: an endpoint for searching terms and their properties is available",
+      "parameters": {
+        "q": {
+          "location": "query",
+          "type": "string",
+          "description": "Term."
+        },
+        "ontologies": {
+          "location": "query",
+          "type": "string",
+          "description": "Ontologies."
+        },
+        "require_exact_match": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Require exact match. Default false"
+        },
+        "suggest": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Will perform a search specifically geared towards type-ahead suggestions. Default false"
+        },
+        "also_search_views": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Include ontology views in the search. Default false."
+        },
+        "require_definitions": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Require definitions. Default false."
+        },
+        "also_search_properties": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Also search properties. Default false."
+        },
+        "also_search_obsolete": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Also search absolete. Default false (exclude)."
+        },
+        "cui": {
+          "location": "query",
+          "type": "string",
+          "description": "Allows restricting query by CUIs. default = null (no restriction). e.g. C0018787,C0225807,C0018787."
+        },
+        "semantic_types": {
+          "location": "query",
+          "type": "string",
+          "description": "Allows restricting query by Semantic Types (TUI). default = null (no restriction). e.g. T023,T185,T061."
+        },
+        "include": {
+          "location": "query",
+          "type": "string",
+          "description": "Include {prefLabel, synonym, definition, notation, cui, semanticType}. Default = (see Common Parameters section)."
+        },
+        "page": {
+          "location": "query",
+          "type": "integer",
+          "description": "Integer representing the page number. Default 1."
+        },
+        "pagesize": {
+          "location": "query",
+          "type": "integer",
+          "description": "Integer integer representing the size of the returned page. Default 50."
+        }
+      }
+    }
+  },
+  "models": {
+    "getResponse": {
+      "type": "object",
+      "additionalProperties": {
+        "location": "json"
+      }
+    }
+  }
+}
